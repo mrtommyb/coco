@@ -9,6 +9,7 @@ def test_import():
     from coco import Coordinates
     from coco import CoordinatesSex
 
+
 def test_coords():
     from coco import Coordinates
     from coco import CoordinatesSex
