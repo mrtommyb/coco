@@ -18,13 +18,14 @@ entry_points = {'console_scripts': [
     'coco-sex = coco.coco:coco_sex',
 ]}
 
-setup(name='coco',
+setup(name='astrococo',
       version=__version__,
       description="astronomical coordinate conversion.",
       long_description="",
       author='Tom Barclay',
       author_email='tom@tombarclay.com',
       license='MIT',
+      url='https://github.com/mrtommyb/coco',
       packages=['coco'],
       install_requires=['numpy>=1.8',
                         ],
