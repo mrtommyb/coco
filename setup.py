@@ -16,6 +16,7 @@ exec(open('coco/version.py').read())
 entry_points = {'console_scripts': [
     'coco = coco.coco:coco',
     'coco-sex = coco.coco:coco_sex',
+    'coco-name = coco.coco:coco_name',
 ]}
 
 setup(name='astrococo',
@@ -28,6 +29,8 @@ setup(name='astrococo',
       url='https://github.com/mrtommyb/coco',
       packages=['coco'],
       install_requires=['numpy>=1.8',
+                        'astroquery',
+                        'astropy'
                         ],
       entry_points=entry_points,
       include_package_data=True,

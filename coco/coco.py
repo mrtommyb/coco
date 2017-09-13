@@ -3,8 +3,10 @@ from __future__ import absolute_import
 import argparse
 from . import Highlight
 from . import logger
+
 from astropy.coordinates import SkyCoord
 from astropy import units as u
+from astroquery.simbad import Simbad
 
 
 class Coordinates(object):
@@ -53,6 +55,25 @@ class CoordinatesSex(Coordinates):
         pass
 
 
+class CoordinatesName(Coordinates):
+
+    def __init__(self, name):
+        self.validate_name(name)
+        self.name = name
+
+        result_table = Simbad.query_object(name)
+        self.ra_sex = result_table['RA'][0]
+        self.dec_sex = result_table['DEC'][0]
+
+        self.skobj = SkyCoord(ra=self.ra_sex,
+                              dec=self.dec_sex,
+                              unit=(u.hourangle, u.deg),
+                              frame='icrs')
+
+
+    def validate_name(self, name):
+        pass
+
 def coco(args=None):
     """
     exposes coco to the command line
@@ -93,9 +114,29 @@ def coco_sex(args=None):
     _output = print_results(ra, dec, sex=True)
 
 
-def print_results(ra, dec, sex=False):
+def coco_name(args=None):
+    """
+    exposes coco to the command line
+    """
+    if args is None:
+        parser = argparse.ArgumentParser(
+            description="Convert between astronomical coordiantes")
+        parser.add_argument('name', nargs='+',
+                            help="Name of the target")
+        args = parser.parse_args(args)
+        args.name = ' '.join(args.name)
+        args = vars(args)
+    name = args['name']
+
+    _output = print_results(name=name)
+
+
+
+def print_results(ra=None, dec=None, name=None, sex=False):
     if sex:
         coords = CoordinatesSex(ra, dec)
+    elif name is not None:
+        coords = CoordinatesName(name)
     else:
         coords = Coordinates(ra, dec)
 
