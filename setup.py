@@ -15,6 +15,7 @@ exec(open('coco/version.py').read())
 # Command-line tools
 entry_points = {'console_scripts': [
     'coco = coco.coco:coco',
+    'coco-sex = coco.coco:coco_sex',
 ]}
 
 setup(name='coco',
