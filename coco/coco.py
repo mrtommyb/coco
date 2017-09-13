@@ -105,13 +105,13 @@ def print_results(ra, dec, sex=False):
 
     print()
     print(Highlight.CYAN +
-          "icrs     = {:.10} {:.10}".format(ra_deg, dec_deg) +
+          "icrs     = {:.13} {:+.13}".format(ra_deg, dec_deg) +
           Highlight.END)
     print(Highlight.RED +
-          "ecliptic = {:.10} {:.10}".format(lon, lat) +
+          "ecliptic = {:.13} {:+.13}".format(lon, lat) +
           Highlight.END)
     print(Highlight.BLUE +
-          "galactic = {:.10} {:.10}".format(l, b) +
+          "galactic = {:.13} {:+.13}".format(l, b) +
           Highlight.END)
 
     print()

@@ -21,5 +21,5 @@ class Highlight:
         END = '\033[0m'
 
 # this needs to come after the Highlight import
-from .coco import coco
+from .coco import coco, coco_sex, Coordinates, CoordinatesSex
 PACKAGEDIR = os.path.dirname(os.path.abspath(__file__))
