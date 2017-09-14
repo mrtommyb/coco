@@ -66,7 +66,7 @@ class CoordinatesName(Coordinates):
 
         with warnings.catch_warnings():
             warnings.simplefilter('ignore')
-            result_table = Simbad.query_object('name')
+            result_table = Simbad.query_object(name)
 
         if result_table is None:
             logger.error("Target name failed to resolve, please check")
