@@ -8,6 +8,9 @@ from astropy.coordinates import SkyCoord
 from astropy import units as u
 from astroquery.simbad import Simbad
 
+import sys
+import warnings
+
 
 class Coordinates(object):
 
@@ -61,7 +64,14 @@ class CoordinatesName(Coordinates):
         self.validate_name(name)
         self.name = name
 
-        result_table = Simbad.query_object(name)
+        with warnings.catch_warnings():
+            warnings.simplefilter('ignore')
+            result_table = Simbad.query_object('name')
+
+        if result_table is None:
+            logger.error("Target name failed to resolve, please check")
+            sys.exit(1)
+
         self.ra_sex = result_table['RA'][0]
         self.dec_sex = result_table['DEC'][0]
         self.name = result_table['MAIN_ID'][0]
@@ -71,9 +81,9 @@ class CoordinatesName(Coordinates):
                               unit=(u.hourangle, u.deg),
                               frame='icrs')
 
-
     def validate_name(self, name):
         pass
+
 
 def coco(args=None):
     """
