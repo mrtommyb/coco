@@ -8,11 +8,12 @@ def test_import():
     from coco import coco_sex
     from coco import Coordinates
     from coco import CoordinatesSex
-
+    from coco import CoordinatesName
 
 def test_coords():
     from coco import Coordinates
     from coco import CoordinatesSex
+    from coco import CoordinatesName
 
     ra, dec = 15.0, 15.0
     c = Coordinates(ra, dec)
@@ -23,3 +24,8 @@ def test_coords():
     c = CoordinatesSex(ra, dec)
     assert np.allclose(c.get_icrs()[0], 15.0)
     assert np.allclose(c.get_icrs()[1], 15.0)
+
+    name = 'alpha cen'
+    c = CoordinatesName(name)
+    assert np.allclose(c.get_icrs()[0], 219.90085)
+    assert np.allclose(c.get_icrs()[1], -60.83561944444)
