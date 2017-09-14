@@ -4,7 +4,12 @@ coco
 
 Command line tool to get coordinates for astronomical sources
 
+## Installation
+```
+pip install -U astrococo
+```
 
+## Useage
 ```
 % coco 289.0 47.9
 
