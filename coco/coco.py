@@ -64,6 +64,7 @@ class CoordinatesName(Coordinates):
         result_table = Simbad.query_object(name)
         self.ra_sex = result_table['RA'][0]
         self.dec_sex = result_table['DEC'][0]
+        self.name = result_table['MAIN_ID'][0]
 
         self.skobj = SkyCoord(ra=self.ra_sex,
                               dec=self.dec_sex,
@@ -137,6 +138,10 @@ def print_results(ra=None, dec=None, name=None, sex=False):
         coords = CoordinatesSex(ra, dec)
     elif name is not None:
         coords = CoordinatesName(name)
+        print()
+        print(Highlight.PURPLE +
+            'Resolved name as {}'.format(coords.name.decode('utf-8')) +
+            Highlight.END)
     else:
         coords = Coordinates(ra, dec)
 

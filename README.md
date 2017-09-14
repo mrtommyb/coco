@@ -16,3 +16,6 @@ galactic = 79.04724337 15.93249512
 ```
 
 ```
+
+I got tired of going into a web browser for this stuff
+
