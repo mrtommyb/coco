@@ -2,7 +2,7 @@ coco
 ---
 [![Build Status](https://travis-ci.org/mrtommyb/coco.svg?branch=master)](https://travis-ci.org/mrtommyb/coco)
 
-Command line too to calculate coordinates
+Command line tool to get coordinates for astronomical sources
 
 
 ```
