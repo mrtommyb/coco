@@ -1,6 +1,7 @@
 coco
 ---
 [![Build Status](https://travis-ci.org/mrtommyb/coco.svg?branch=master)](https://travis-ci.org/mrtommyb/coco)
+[![DOI](https://zenodo.org/badge/103404146.svg)](https://zenodo.org/badge/latestdoi/103404146)
 
 Command line tool to get coordinates for astronomical sources
 
