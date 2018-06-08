@@ -4,13 +4,14 @@ import argparse
 from . import Highlight
 from . import logger
 
-from astropy.coordinates import SkyCoord
+from astropy.coordinates import SkyCoord, get_constellation
 from astropy import units as u
 from astroquery.simbad import Simbad
+# from astropy.time import Time
 
 import sys
 import warnings
-
+warnings.filterwarnings('ignore', category=UserWarning, append=True)
 
 class Coordinates(object):
 
@@ -168,6 +169,10 @@ def print_results(ra=None, dec=None, name=None, sex=False):
           Highlight.END)
     print(Highlight.BLUE +
           "galactic = {:.13} {:+.13}".format(l, b) +
+          Highlight.END)
+    print(Highlight.PURPLE +
+          "The star is in constellation {}".format(get_constellation(
+          coords.skobj)) +
           Highlight.END)
 
     print()
